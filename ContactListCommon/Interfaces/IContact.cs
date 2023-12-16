@@ -12,5 +12,5 @@ public interface IContact
 	string Phone { get; set; }
 	string StreetAddress { get; set; }
 	string City { get; set; }
-	string PostalCode { get; set; } // string and not uint or similar in case any forms of postal codes contain initial zeros and/or letters
+	string PostalCode { get; set; } // string and not uint or similar in in order to allow postal codes with initial zeros and/or letters
 }
