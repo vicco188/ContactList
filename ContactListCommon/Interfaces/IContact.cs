@@ -1,5 +1,7 @@
 ﻿namespace ContactListCommon.Interfaces;
-
+/// <summary>
+/// Model of an object that contains a contact's name, email, address and phone number
+/// </summary>
 public interface IContact
 {
 	Guid Id { get; }
