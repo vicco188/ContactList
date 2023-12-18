@@ -46,9 +46,9 @@ public class ContactService : IContactService
 				}));
 				return new ServiceResponse(contact, ResponseStatus.SUCCESS);
 			}
-			catch
+			catch (Exception ex)
 			{
-				return new ServiceResponse("Could not add contact", ResponseStatus.FAILED);
+				return new ServiceResponse("Could not add contact: " + ex.Message, ResponseStatus.FAILED);
 			}
 
 		}
@@ -70,9 +70,9 @@ public class ContactService : IContactService
 				response.Result = contact;
 				response.Status = ResponseStatus.SUCCESS;
 			}
-			catch
+			catch (Exception ex)
 			{
-				response.Result = "Could not load contact";
+				response.Result = "Could not load contact: " + ex.Message;
 				response.Status = ResponseStatus.FAILED;
 			}
 		}
@@ -122,9 +122,9 @@ public class ContactService : IContactService
 				}));
 				return new ServiceResponse(contact, ResponseStatus.SUCCESS);
 			}
-			catch
+			catch (Exception ex)
 			{
-				return new ServiceResponse("Could not remove contact", ResponseStatus.FAILED);
+				return new ServiceResponse("Could not remove contact: " + ex.Message, ResponseStatus.FAILED);
 			}
 		}
 		else

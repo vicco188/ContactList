@@ -92,7 +92,7 @@ internal class ConsoleInterfaceService(IContactService contactService) : IConsol
 	}
 
 	/// <summary>
-	/// Shows all contact in list and interacts with the user to either remove or show details for a position in the list
+	/// Shows all contacts in list and interacts with the user to either remove or show details for a position in the list
 	/// </summary>
 	private void ShowAllMenu()
 	{
@@ -157,6 +157,7 @@ internal class ConsoleInterfaceService(IContactService contactService) : IConsol
 			}
 		}
 	}
+
 	/// <summary>
 	/// Interacts with the user to delete specific contact from the contact list
 	/// </summary>
@@ -194,9 +195,11 @@ internal class ConsoleInterfaceService(IContactService contactService) : IConsol
 		}
 	}
 
+	/// <summary>
+	/// Will pause the excecution of the program pending user key press then clears console
+	/// </summary>
 	private void PressAnyKey()
 	{
-
 		Console.Write("\nTryck någon tangent för att fortsätta . . .");
 		Console.ReadKey();
 		Console.Clear();

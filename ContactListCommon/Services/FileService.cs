@@ -1,4 +1,5 @@
 ﻿using ContactListCommon.Interfaces;
+using System.Diagnostics;
 
 namespace ContactListCommon.Services;
 
@@ -12,29 +13,44 @@ public class FileService(string filePath) : IFileService
 
 	public void WriteToFile(string content)
 	{
-		using (StreamWriter writer = new StreamWriter(_filePath, false))
+		try
 		{
-			writer.WriteLine(content);
+			using (StreamWriter writer = new StreamWriter(_filePath, false))
+			{
+				writer.WriteLine(content);
+			}
+		}
+		catch
+		{
+			throw; // pass on the exception to calling method
 		}
 
 	}
 
+
 	public string ReadFromFile()
 	{
+		string result = "[]"; 
+
 		if (File.Exists(_filePath))
 		{
-			using (StreamReader reader = new StreamReader(_filePath))
+			try
 			{
-				string result = reader.ReadToEnd();
-
-				if (string.IsNullOrEmpty(result))
-					result = "[]"; // Existing but empty file will return empty list []
-				return result;
+				using (StreamReader reader = new StreamReader(_filePath))
+				{
+					result = reader.ReadToEnd().Trim();
+				}
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"Error reading file: {ex.Message}");
+			}
+			if (string.IsNullOrEmpty(result))
+			{
+				result = "[]"; // blank file will return empty string
 			}
 		}
-		else
-		{
-			return "[]"; // Not existing file will return empty list []
-		}
+		
+		return result;
 	}
 }

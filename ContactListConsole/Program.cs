@@ -11,7 +11,7 @@ internal class Program
 {
 	static void Main(string[] args)
 	{
-		string filePath = "contactlist.json";
+		string filePath = @"1345/contactlist.json";
 		var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
 		{
 			services.AddScoped<IContactService, ContactService>();

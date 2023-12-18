@@ -4,7 +4,6 @@ using ContactListCommon.Models;
 using ContactListCommon.Services;
 using Moq;
 using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace ContactListCommon.Test;
 
