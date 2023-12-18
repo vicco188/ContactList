@@ -65,8 +65,16 @@ public class ContactService : IContactService
 		IContact contact = contactList.FirstOrDefault(contact => contact.Email == email.ToLower())!;
 		if (contact != null)
 		{
-			response.Result = contact;
-			response.Status = ResponseStatus.SUCCESS;
+			try
+			{
+				response.Result = contact;
+				response.Status = ResponseStatus.SUCCESS;
+			}
+			catch
+			{
+				response.Result = "Could not load contact";
+				response.Status = ResponseStatus.FAILED;
+			}
 		}
 		else
 		{
